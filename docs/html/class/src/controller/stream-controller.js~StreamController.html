@@ -32,6 +32,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event-handler.js~EventHandler.html">EventHandler</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/hls.js~Hls.html">Hls</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html">TaskLoop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isSupported">isSupported</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-hlsDefaultConfig">hlsDefaultConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ErrorTypes">ErrorTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-HlsEvents">HlsEvents</a></span></span></li>
@@ -43,12 +44,21 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/cap-level-controller.js~CapLevelController.html">CapLevelController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/eme-controller.js~EMEController.html">EMEController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/fps-controller.js~FPSController.html">FPSController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/fragment-tracker.js~FragmentTracker.html">FragmentTracker</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/id3-track-controller.js~ID3TrackController.html">ID3TrackController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/level-controller.js~LevelController.html">LevelController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html">StreamController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/subtitle-stream-controller.js~SubtitleStreamController.html">SubtitleStreamController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/subtitle-track-controller.js~SubtitleTrackController.html">SubtitleTrackController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/controller/timeline-controller.js~TimelineController.html">TimelineController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calculateNextPDT">calculateNextPDT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findFragmentByPDT">findFragmentByPDT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findFragmentBySN">findFragmentBySN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fragmentWithinToleranceTest">fragmentWithinToleranceTest</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mergeDetails">mergeDetails</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateFragPTSDTS">updateFragPTSDTS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updatePTS">updatePTS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FragmentState">FragmentState</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-State">State</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#crypt">crypt</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/crypt/aes-crypto.js~AESCrypto.html">AESCrypto</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/crypt/aes-decryptor.js~AESDecryptor.html">AESDecryptor</a></span></span></li>
@@ -77,27 +87,19 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-DemuxerWorker">DemuxerWorker</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-utf8ArrayToStr">utf8ArrayToStr</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MpegAudio">MpegAudio</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#helper">helper</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/aac.js~AAC.html">AAC</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/fragment-tracker.js~FragmentTracker.html">FragmentTracker</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isSupported">isSupported</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mergeDetails">mergeDetails</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateFragPTSDTS">updateFragPTSDTS</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updatePTS">updatePTS</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMediaSource">getMediaSource</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BufferHelper">BufferHelper</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FragmentState">FragmentState</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-requestMediaKeySystemAccess">requestMediaKeySystemAccess</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#loader">loader</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loader/fragment-loader.js~FragmentLoader.html">FragmentLoader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loader/fragment.js~Fragment.html">Fragment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loader/key-loader.js~KeyLoader.html">KeyLoader</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loader/level-key.js~LevelKey.html">LevelKey</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loader/m3u8-parser.js~M3U8Parser.html">M3U8Parser</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/loader/playlist-loader.js~PlaylistLoader.html">PlaylistLoader</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#remux">remux</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/remux/dummy-remuxer.js~DummyRemuxer.html">DummyRemuxer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#remux">remux</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/remux/aac-helper.js~AAC.html">AAC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/remux/dummy-remuxer.js~DummyRemuxer.html">DummyRemuxer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/remux/mp4-generator.js~MP4.html">MP4</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/remux/mp4-remuxer.js~MP4Remuxer.html">MP4Remuxer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/remux/passthrough-remuxer.js~PassThroughRemuxer.html">PassThroughRemuxer</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/utils/attr-list.js~AttrList.html">AttrList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/utils/buffer-helper.js~BufferHelper.html">BufferHelper</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/utils/cea-608-parser.js~Cea608Parser.html">Cea608Parser</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/utils/ewma-bandwidth-estimator.js~EwmaBandWidthEstimator.html">EwmaBandWidthEstimator</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/utils/ewma.js~EWMA.html">EWMA</a></span></span></li>
@@ -114,6 +116,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findFragWithCC">findFragWithCC</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-shouldAlignOnDiscontinuities">shouldAlignOnDiscontinuities</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-enableLogs">enableLogs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMediaSource">getMediaSource</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clearCurrentCues">clearCurrentCues</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendAddTrackEvent">sendAddTrackEvent</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-VTTParser">VTTParser</a></span></span></li>
@@ -121,6 +124,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BinarySearch">BinarySearch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Hex">Hex</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-logger">logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-requestMediaKeySystemAccess">requestMediaKeySystemAccess</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TimeRanges">TimeRanges</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-WebVTTParser">WebVTTParser</a></span></span></li>
 </ul>
@@ -128,13 +132,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import StreamController from &apos;<span><a href="file/src/controller/stream-controller.js.html#lineNumber33">hls.js/src/controller/stream-controller.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import StreamController from &apos;<span><a href="file/src/controller/stream-controller.js.html#lineNumber34">hls.js/src/controller/stream-controller.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/controller/stream-controller.js.html#lineNumber33">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/controller/stream-controller.js.html#lineNumber34">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -771,7 +775,7 @@
     <td>
       <span class="access" data-ice="access">public</span>
       
-      <span class="kind" data-ice="kind">get</span>
+      <span class="kind" data-ice="kind">set</span>
       
       <span class="override" data-ice="override"></span>
     </td>
@@ -781,7 +785,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-get-liveSyncPosition">liveSyncPosition</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-set-liveSyncPosition">liveSyncPosition</a></span></span>
         </p>
       </div>
       <div>
@@ -799,7 +803,7 @@
     <td>
       <span class="access" data-ice="access">public</span>
       
-      <span class="kind" data-ice="kind">set</span>
+      <span class="kind" data-ice="kind">get</span>
       
       <span class="override" data-ice="override"></span>
     </td>
@@ -809,7 +813,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-set-liveSyncPosition">liveSyncPosition</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-get-liveSyncPosition">liveSyncPosition</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -2467,7 +2471,8 @@ we should take into account new segment fetch time</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Checks the health of the buffer and attempts to resolve playback stalls.</p>
+</div>
       </div>
     </td>
     <td>
@@ -2629,7 +2634,7 @@ we should take into account new segment fetch time</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_findFragmentByPDT">_findFragmentByPDT</a></span></span><span class="code" data-ice="signature">(fragments: <span>*</span>, PDTValue: <span>*</span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_loadFragment">_loadFragment</a></span></span><span class="code" data-ice="signature">(frag: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -2657,35 +2662,7 @@ we should take into account new segment fetch time</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_findFragmentBySN">_findFragmentBySN</a></span></span><span class="code" data-ice="signature">(fragPrevious: <span>*</span>, fragments: <span>*</span>, bufferEnd: <span>*</span>, end: <span>*</span>): <span>*</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">private</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_loadFragmentOrKey">_loadFragmentOrKey</a></span></span><span class="code" data-ice="signature">(frag: <span>*</span>, level: <span>*</span>, levelDetails: <span>*</span>, pos: <span>*</span>, bufferEnd: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_loadKey">_loadKey</a></span></span><span class="code" data-ice="signature">(frag: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -2720,6 +2697,151 @@ we should take into account new segment fetch time</p>
         
         
         
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_reportStall">_reportStall</a></span></span><span class="code" data-ice="signature">(bufferLen: <span>*</span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Triggers a BUFFER_STALLED_ERROR event, but only once per stall period.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_seekToStartPos">_seekToStartPos</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Seeks to the set startPosition if not equal to the mediaElement&apos;s current time.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_tryFixBufferStall">_tryFixBufferStall</a></span></span><span class="code" data-ice="signature">(bufferInfo: <span>*</span>, stalledDuration: <span>*</span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Detects and attempts to fix known buffer stalling issues.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_tryNudgeBuffer">_tryNudgeBuffer</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Attempts to fix buffer stalls by advancing the mediaElement&apos;s current time by a small amount.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/controller/stream-controller.js~StreamController.html#instance-method-_trySkipBufferHole">_trySkipBufferHole</a></span></span><span class="code" data-ice="signature">(partial: <span>*</span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Attempts to fix buffer stalls by jumping over known gaps caused by partial fragments</p>
+</div>
       </div>
     </td>
     <td>
@@ -3065,6 +3187,34 @@ we should take into account new segment fetch time</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-member-_boundTick">_boundTick</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-member-_tickCallCount">_tickCallCount</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
@@ -3094,6 +3244,34 @@ we should take into account new segment fetch time</p>
           
           
           <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-member-_tickInterval">_tickInterval</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-member-_tickTimer">_tickTimer</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -3149,7 +3327,7 @@ we should take into account new segment fetch time</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-method-clearNextTick">clearNextTick</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -3234,6 +3412,62 @@ we should take into account new segment fetch time</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-method-hasNextTick">hasNextTick</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-method-onHandlerDestroying">onHandlerDestroying</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-method-setInterval">setInterval</a></span></span><span class="code" data-ice="signature">(millis: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
@@ -3262,13 +3496,16 @@ we should take into account new segment fetch time</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-method-tick">tick</a></span></span><span class="code" data-ice="signature">(forceAsync: <span>Wether to force async</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/task-loop.js~TaskLoop.html#instance-method-tick">tick</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Will call the subclass doTick implementation in this main loop tick
+or in the next one (via setTimeout(,0)) in case it has already been called
+in this tick (in case this is a re-entrant call).</p>
+</div>
       </div>
     </td>
     <td>
@@ -3296,7 +3533,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber34">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber35">source</a></span></span>
     </span>
   </h3>
 
@@ -3342,7 +3579,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1202">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1195">source</a></span></span>
     </span>
   </h3>
 
@@ -3385,7 +3622,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber998">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber985">source</a></span></span>
     </span>
   </h3>
 
@@ -3428,7 +3665,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber57">source</a></span></span>
     </span>
   </h3>
 
@@ -3471,7 +3708,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber861">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber843">source</a></span></span>
     </span>
   </h3>
 
@@ -3514,7 +3751,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber82">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber84">source</a></span></span>
     </span>
   </h3>
 
@@ -3557,7 +3794,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber55">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber56">source</a></span></span>
     </span>
   </h3>
 
@@ -3600,7 +3837,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber555">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber520">source</a></span></span>
     </span>
   </h3>
 
@@ -3643,7 +3880,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber115">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber118">source</a></span></span>
     </span>
   </h3>
 
@@ -3686,7 +3923,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber98">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber100">source</a></span></span>
     </span>
   </h3>
 
@@ -3729,7 +3966,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber110">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber113">source</a></span></span>
     </span>
   </h3>
 
@@ -3772,7 +4009,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1265">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1259">source</a></span></span>
     </span>
   </h3>
 
@@ -3815,7 +4052,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber77">source</a></span></span>
     </span>
   </h3>
 
@@ -3858,7 +4095,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber622">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber591">source</a></span></span>
     </span>
   </h3>
 
@@ -3901,7 +4138,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber112">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber115">source</a></span></span>
     </span>
   </h3>
 
@@ -3944,7 +4181,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber54">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber55">source</a></span></span>
     </span>
   </h3>
 
@@ -3987,7 +4224,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber637">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber606">source</a></span></span>
     </span>
   </h3>
 
@@ -4030,7 +4267,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber602">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber569">source</a></span></span>
     </span>
   </h3>
 
@@ -4073,7 +4310,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber74">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber76">source</a></span></span>
     </span>
   </h3>
 
@@ -4116,7 +4353,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber905">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber889">source</a></span></span>
     </span>
   </h3>
 
@@ -4159,50 +4396,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber865">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-get-liveSyncPosition">
-    <span class="access" data-ice="access">public</span>
-    
-    <span class="kind" data-ice="kind">get</span>
-    
-    
-    
-    <span class="code" data-ice="name">liveSyncPosition</span><span class="code" data-ice="signature">: <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1494">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber848">source</a></span></span>
     </span>
   </h3>
 
@@ -4245,7 +4439,50 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1498">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1571">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-get-liveSyncPosition">
+    <span class="access" data-ice="access">public</span>
+    
+    <span class="kind" data-ice="kind">get</span>
+    
+    
+    
+    <span class="code" data-ice="name">liveSyncPosition</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1567">source</a></span></span>
     </span>
   </h3>
 
@@ -4288,7 +4525,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber87">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber89">source</a></span></span>
     </span>
   </h3>
 
@@ -4331,7 +4568,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber772">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber747">source</a></span></span>
     </span>
   </h3>
 
@@ -4374,7 +4611,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1181">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1174">source</a></span></span>
     </span>
   </h3>
 
@@ -4417,7 +4654,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber565">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber531">source</a></span></span>
     </span>
   </h3>
 
@@ -4460,7 +4697,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber583">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber549">source</a></span></span>
     </span>
   </h3>
 
@@ -4503,7 +4740,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber95">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber97">source</a></span></span>
     </span>
   </h3>
 
@@ -4546,7 +4783,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1397">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1389">source</a></span></span>
     </span>
   </h3>
 
@@ -4589,7 +4826,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber738">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber712">source</a></span></span>
     </span>
   </h3>
 
@@ -4632,7 +4869,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber737">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber711">source</a></span></span>
     </span>
   </h3>
 
@@ -4675,7 +4912,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber736">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber710">source</a></span></span>
     </span>
   </h3>
 
@@ -4718,7 +4955,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber997">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber984">source</a></span></span>
     </span>
   </h3>
 
@@ -4761,7 +4998,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber646">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber615">source</a></span></span>
     </span>
   </h3>
 
@@ -4804,7 +5041,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1293">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1288">source</a></span></span>
     </span>
   </h3>
 
@@ -4847,7 +5084,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1394">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber59">source</a></span></span>
     </span>
   </h3>
 
@@ -4890,7 +5127,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber844">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber824">source</a></span></span>
     </span>
   </h3>
 
@@ -4933,7 +5170,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber514">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber477">source</a></span></span>
     </span>
   </h3>
 
@@ -4976,7 +5213,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber751">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber726">source</a></span></span>
     </span>
   </h3>
 
@@ -5019,7 +5256,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber538">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber503">source</a></span></span>
     </span>
   </h3>
 
@@ -5062,7 +5299,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber547">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber512">source</a></span></span>
     </span>
   </h3>
 
@@ -5105,7 +5342,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber962">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber947">source</a></span></span>
     </span>
   </h3>
 
@@ -5148,7 +5385,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1230">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1223">source</a></span></span>
     </span>
   </h3>
 
@@ -5193,7 +5430,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1499">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1572">source</a></span></span>
     </span>
   </h3>
 
@@ -5236,7 +5473,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber57">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber58">source</a></span></span>
     </span>
   </h3>
 
@@ -5282,7 +5519,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1489">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1438">source</a></span></span>
     </span>
   </h3>
 
@@ -5359,7 +5596,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber122">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber125">source</a></span></span>
     </span>
   </h3>
 
@@ -5403,7 +5640,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber724">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber697">source</a></span></span>
     </span>
   </h3>
 
@@ -5468,7 +5705,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber575">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber541">source</a></span></span>
     </span>
   </h3>
 
@@ -5539,7 +5776,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber551">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber516">source</a></span></span>
     </span>
   </h3>
 
@@ -5610,7 +5847,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber634">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber603">source</a></span></span>
     </span>
   </h3>
 
@@ -5653,7 +5890,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber662">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber632">source</a></span></span>
     </span>
   </h3>
 
@@ -5701,7 +5938,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber681">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber652">source</a></span></span>
     </span>
   </h3>
 
@@ -5748,7 +5985,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1206">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1199">source</a></span></span>
     </span>
   </h3>
 
@@ -5807,7 +6044,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1171">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1164">source</a></span></span>
     </span>
   </h3>
 
@@ -5866,7 +6103,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1243">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1237">source</a></span></span>
     </span>
   </h3>
 
@@ -5925,7 +6162,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1221">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1214">source</a></span></span>
     </span>
   </h3>
 
@@ -5984,7 +6221,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1471">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1419">source</a></span></span>
     </span>
   </h3>
 
@@ -6027,7 +6264,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1273">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1267">source</a></span></span>
     </span>
   </h3>
 
@@ -6086,7 +6323,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1460">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1408">source</a></span></span>
     </span>
   </h3>
 
@@ -6129,7 +6366,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber948">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber933">source</a></span></span>
     </span>
   </h3>
 
@@ -6188,7 +6425,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1157">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1150">source</a></span></span>
     </span>
   </h3>
 
@@ -6247,7 +6484,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1084">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1075">source</a></span></span>
     </span>
   </h3>
 
@@ -6306,7 +6543,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1015">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1003">source</a></span></span>
     </span>
   </h3>
 
@@ -6365,7 +6602,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber64">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber66">source</a></span></span>
     </span>
   </h3>
 
@@ -6408,7 +6645,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber60">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber62">source</a></span></span>
     </span>
   </h3>
 
@@ -6417,7 +6654,7 @@ we should take into account new segment fetch time</p>
   
   
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/event-handler.js~EventHandler.html#instance-method-onHandlerDestroying">EventHandler#onHandlerDestroying</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/task-loop.js~TaskLoop.html#instance-method-onHandlerDestroying">TaskLoop#onHandlerDestroying</a></span></div>
 
   <div data-ice="properties">
 </div>
@@ -6451,7 +6688,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber941">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber926">source</a></span></span>
     </span>
   </h3>
 
@@ -6494,7 +6731,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber872">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber856">source</a></span></span>
     </span>
   </h3>
 
@@ -6553,7 +6790,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber839">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber819">source</a></span></span>
     </span>
   </h3>
 
@@ -6596,7 +6833,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber848">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber828">source</a></span></span>
     </span>
   </h3>
 
@@ -6655,7 +6892,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber734">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber708">source</a></span></span>
     </span>
   </h3>
 
@@ -6714,7 +6951,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber747">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber722">source</a></span></span>
     </span>
   </h3>
 
@@ -6757,7 +6994,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber833">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber813">source</a></span></span>
     </span>
   </h3>
 
@@ -6800,7 +7037,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber824">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber803">source</a></span></span>
     </span>
   </h3>
 
@@ -6843,7 +7080,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber777">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber752">source</a></span></span>
     </span>
   </h3>
 
@@ -6886,7 +7123,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber69">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber71">source</a></span></span>
     </span>
   </h3>
 
@@ -6945,7 +7182,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber103">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber105">source</a></span></span>
     </span>
   </h3>
 
@@ -6988,7 +7225,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1485">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1434">source</a></span></span>
     </span>
   </h3>
 
@@ -7033,7 +7270,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1254">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1248">source</a></span></span>
     </span>
   </h3>
 
@@ -7083,7 +7320,8 @@ we should take into account new segment fetch time</p>
   
   
   
-  
+  <div data-ice="description"><p>Checks the health of the buffer and attempts to resolve playback stalls.</p>
+</div>
 
   
 
@@ -7119,7 +7357,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber591">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber558">source</a></span></span>
     </span>
   </h3>
 
@@ -7162,7 +7400,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber166">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber170">source</a></span></span>
     </span>
   </h3>
 
@@ -7205,7 +7443,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber300">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber321">source</a></span></span>
     </span>
   </h3>
 
@@ -7312,7 +7550,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber256">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber266">source</a></span></span>
     </span>
   </h3>
 
@@ -7383,7 +7621,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber437">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber395">source</a></span></span>
     </span>
   </h3>
 
@@ -7479,184 +7717,18 @@ we should take into account new segment fetch time</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-_findFragmentByPDT">
+  <h3 data-ice="anchor" id="instance-method-_loadFragment">
     <span class="access" data-ice="access">private</span>
     
     
     
     
     
-    <span class="code" data-ice="name">_findFragmentByPDT</span><span class="code" data-ice="signature">(fragments: <span>*</span>, PDTValue: <span>*</span>): <span>*</span></span>
+    <span class="code" data-ice="name">_loadFragment</span><span class="code" data-ice="signature">(frag: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber371">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">fragments</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">PDTValue</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-_findFragmentBySN">
-    <span class="access" data-ice="access">private</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">_findFragmentBySN</span><span class="code" data-ice="signature">(fragPrevious: <span>*</span>, fragments: <span>*</span>, bufferEnd: <span>*</span>, end: <span>*</span>): <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber394">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">fragPrevious</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">fragments</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">bufferEnd</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">end</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-_loadFragmentOrKey">
-    <span class="access" data-ice="access">private</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">_loadFragmentOrKey</span><span class="code" data-ice="signature">(frag: <span>*</span>, level: <span>*</span>, levelDetails: <span>*</span>, pos: <span>*</span>, bufferEnd: <span>*</span>)</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber502">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber472">source</a></span></span>
     </span>
   </h3>
 
@@ -7681,26 +7753,61 @@ we should take into account new segment fetch time</p>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">level</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">levelDetails</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">pos</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">bufferEnd</td>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-_loadKey">
+    <span class="access" data-ice="access">private</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">_loadKey</span><span class="code" data-ice="signature">(frag: <span>*</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber467">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">frag</td>
       <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
@@ -7739,7 +7846,7 @@ we should take into account new segment fetch time</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1348">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1344">source</a></span></span>
     </span>
   </h3>
 
@@ -7798,11 +7905,289 @@ we should take into account new segment fetch time</p>
   
   
 </div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-_reportStall">
+    <span class="access" data-ice="access">private</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">_reportStall</span><span class="code" data-ice="signature">(bufferLen: <span>*</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1475">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Triggers a BUFFER_STALLED_ERROR event, but only once per stall period.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">bufferLen</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The playhead distance from the end of the current buffer segment.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-_seekToStartPos">
+    <span class="access" data-ice="access">private</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">_seekToStartPos</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1553">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Seeks to the set startPosition if not equal to the mediaElement&apos;s current time.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-_tryFixBufferStall">
+    <span class="access" data-ice="access">private</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">_tryFixBufferStall</span><span class="code" data-ice="signature">(bufferInfo: <span>*</span>, stalledDuration: <span>*</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1449">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Detects and attempts to fix known buffer stalling issues.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">bufferInfo</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The properties of the current buffer.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">stalledDuration</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The amount of time Hls.js has been stalling for.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-_tryNudgeBuffer">
+    <span class="access" data-ice="access">private</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">_tryNudgeBuffer</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1523">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Attempts to fix buffer stalls by advancing the mediaElement&apos;s current time by a small amount.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-_trySkipBufferHole">
+    <span class="access" data-ice="access">private</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">_trySkipBufferHole</span><span class="code" data-ice="signature">(partial: <span>*</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/controller/stream-controller.js.html#lineNumber1495">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Attempts to fix buffer stalls by jumping over known gaps caused by partial fragments</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">partial</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The partial fragment found at the current time (where playback is stalling).</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
 </div>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.4)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>
